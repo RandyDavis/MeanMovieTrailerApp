@@ -34,4 +34,16 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+
+  .factory('MovieRestangular', function(Restangular) {
+    return Restangular.withConfig(function(RestangularConfigurer) {
+      RestangularConfigurer.setRestangularFields({
+        id: '_id'
+      });
+    });
+  })
+
+  .factory('Movie', function(MovieRestangular) {
+    return MovieRestangular.service('movie');
   });
