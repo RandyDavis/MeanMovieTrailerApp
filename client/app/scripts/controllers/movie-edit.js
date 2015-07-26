@@ -11,7 +11,7 @@ angular.module('clientApp')
   .controller('MovieEditCtrl', ["$scope", "$routeParams", "Movie", "$location", function ($scope, $routeParams, Movie, $location) {
     $scope.editMovie = true;
     $scope.movie = {};
-    Movie.one($routeParams).get().then(function(movie) {
+    Movie.one($routeParams.id).get().then(function(movie) {
       $scope.movie = movie;
       $scope.saveMovie = function() {
         $scope.movie.save().then(function() {
